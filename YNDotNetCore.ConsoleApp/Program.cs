@@ -30,11 +30,16 @@ foreach (DataRow dr in dt.Rows)
     Console.WriteLine("Blog Content =>" + dr["BlogContent"]);
     Console.WriteLine("--------------------------------------");
 }*/
-AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+/*AdoDotNetExample adoDotNetExample = new AdoDotNetExample();*/
 /*adoDotNetExample.Read();*/
 /*adoDotNetExample.Create("title", "author", "content");*/
 /*adoDotNetExample.Update(12, "test title", "test author", "test content");*/
 /*adoDotNetExample.Delete(13);*/
-adoDotNetExample.Edit(13);
-adoDotNetExample.Edit(5);
+/*adoDotNetExample.Edit(13);
+adoDotNetExample.Edit(5);*/
+
+/*DrapperExample drapperExample = new DrapperExample();
+drapperExample.Run();*/
+EFCoreExample eFCoreExample = new EFCoreExample();
+eFCoreExample.Run();
 Console.ReadKey();
