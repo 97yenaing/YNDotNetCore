@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YNDotNetCore.ConsoleApp
+namespace YNDotNetCore.ConsoleApp.Services
 {
     internal static class ConnectionStrings
     {
         public static SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
-            DataSource=".",
-            InitialCatalog= "DotNetTrainingBatch4",
+            DataSource = ".",
+            InitialCatalog = "DotNetTrainingBatch4",
             UserID = "sa",
             Password = "@naing?007bl@ck#",
             TrustServerCertificate = true,
 
         };
-    } 
+    }
 }

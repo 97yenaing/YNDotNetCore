@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YNDotNetCore.RestApi.Models;
 
-namespace YNDotNetCore.ConsoleApp
+namespace YNDotNetCore.RestApi.Db
 {
     internal class AppDbContext : DbContext
     {
@@ -13,6 +14,6 @@ namespace YNDotNetCore.ConsoleApp
         {
             optionsBuilder.UseSqlServer(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
         }
-        public DbSet<BlogDto> Blogs { get; set; }
+        public DbSet<BlogModel> Blogs { get; set; }
     }
 }

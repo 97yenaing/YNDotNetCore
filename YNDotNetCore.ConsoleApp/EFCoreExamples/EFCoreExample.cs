@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YNDotNetCore.ConsoleApp.Dtos;
 
-namespace YNDotNetCore.ConsoleApp
+namespace YNDotNetCore.ConsoleApp.EFCoreExamples
 {
     internal class EFCoreExample
     {
@@ -20,8 +21,8 @@ namespace YNDotNetCore.ConsoleApp
         }
         private void Read()
         {
-            
-            var lst= db.Blogs.ToList();
+
+            var lst = db.Blogs.ToList();
             foreach (BlogDto item in lst)
             {
                 Console.WriteLine(item.BlogId);
@@ -35,7 +36,7 @@ namespace YNDotNetCore.ConsoleApp
         }
         private void Edit(int id)
         {
-            var item=db.Blogs.FirstOrDefault(x => x.BlogId == id);
+            var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
             {
                 Console.WriteLine("No Data Found");
@@ -48,7 +49,8 @@ namespace YNDotNetCore.ConsoleApp
             Console.WriteLine("--------------------------------");
         }
 
-        private void Create(string title,string author,string content) {
+        private void Create(string title, string author, string content)
+        {
             var item = new BlogDto
             {
                 BlogTitle = title,
@@ -56,13 +58,13 @@ namespace YNDotNetCore.ConsoleApp
                 BlogContent = content,
             };
             db.Blogs.Add(item);
-            int result=db.SaveChanges();//Query EXecute EfCore
+            int result = db.SaveChanges();//Query EXecute EfCore
 
             string message = result > 0 ? "saving Successful." : "Saving Failed";
             Console.WriteLine(message);
         }
 
-        private void Update(int id, String title, string author, string content)
+        private void Update(int id, string title, string author, string content)
         {
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id); // already get real db state 
             if (item is null)
@@ -100,5 +102,5 @@ namespace YNDotNetCore.ConsoleApp
 
 
 
-    }   
+    }
 }

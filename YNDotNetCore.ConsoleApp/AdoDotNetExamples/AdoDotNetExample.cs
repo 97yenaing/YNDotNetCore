@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Reflection.Metadata;
 
-namespace YNDotNetCore.ConsoleApp
+namespace YNDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
         private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
-        {   DataSource = "DESKTOP-CENKFK6",
+        {
+            DataSource = "DESKTOP-CENKFK6",
             InitialCatalog = "DotNetTrainingBatch4",
             UserID = "sa",
             Password = "@naing?007bl@ck#",
@@ -40,7 +41,7 @@ namespace YNDotNetCore.ConsoleApp
             {
                 Console.WriteLine("No data found");
                 return;
-                
+
             }
             DataRow dr = dt.Rows[0];
             Console.WriteLine("Blog Id =>" + dr["BlogId"]);
@@ -48,11 +49,11 @@ namespace YNDotNetCore.ConsoleApp
             Console.WriteLine("Blog Author =>" + dr["BlogAuthor"]);
             Console.WriteLine("Blog Content =>" + dr["BlogContent"]);
             Console.WriteLine("--------------------------------------");
-          
+
 
         }
         public void Read()
-        {        
+        {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
@@ -78,7 +79,7 @@ namespace YNDotNetCore.ConsoleApp
 
         }
 
-        public void Create(String title,string author, string content)
+        public void Create(string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -102,7 +103,7 @@ namespace YNDotNetCore.ConsoleApp
 
         }
 
-        public void Update(int id,string title,string author, string content)
+        public void Update(int id, string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();

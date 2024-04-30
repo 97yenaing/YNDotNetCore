@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using YNDotNetCore.ConsoleApp;
+using YNDotNetCore.ConsoleApp.EFCoreExamples;
 
 Console.WriteLine("Hello, World!");
 /*SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder();
