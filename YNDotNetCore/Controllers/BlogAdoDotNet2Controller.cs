@@ -5,18 +5,19 @@ using System.Data;
 using System.Data.SqlClient;
 using YNDotNetCore.RestApi.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using YNDotNetCore.Shared;
 
 namespace YNDotNetCore.RestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogAdoDotNetController : ControllerBase
-    {
+    public class BlogAdoDotNet2Controller : ControllerBase
+    {   private readonly AdoDotNetService _adoDotNetService=new AdoDotNetService(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
         [HttpGet]
         public IActionResult GetBlogs()
         {
             string query = "select * from tbl_blog";
-            SqlConnection connection = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
+           /* SqlConnection connection = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
 
@@ -27,7 +28,7 @@ namespace YNDotNetCore.RestApi.Controllers
 
             sqlDataAdapter.Fill(dt);
 
-            connection.Close();
+            connection.Close();*/
             /* List<BlogModel> list = new List<BlogModel>();
              foreach (DataRow dr in dt.Rows)
              {   BlogModel blog = new BlogModel();
@@ -37,13 +38,14 @@ namespace YNDotNetCore.RestApi.Controllers
                  blog.BlogContent = Convert.ToString(dr["BlogContent"]);
                  list.Add(blog);
              }*/
-            List<BlogModel> list = dt.AsEnumerable().Select(dr => new BlogModel
+            /*List<BlogModel> list = dt.AsEnumerable().Select(dr => new BlogModel
             {
                 BlogId = Convert.ToInt32(dr["BlogID"]),
                 BlogAuthor = Convert.ToString(dr["BlogAuthor"]),
                 BlogTitle = Convert.ToString(dr["BlogTitle"]),
                 BlogContent = Convert.ToString(dr["BlogContent"]),
-            }).ToList();
+            }).ToList();*/
+            var list=_adoDotNetService.Query<BlogModel>(query);
             return Ok(list);
         }
 
