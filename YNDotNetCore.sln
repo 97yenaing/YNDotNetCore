@@ -13,7 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.RestApi", "YNDotNetCore\YNDotNetCore.RestApi.csproj", "{1378FFCC-D719-4636-893A-9F1267B2CE2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YNDotNetCore.Shared", "YNDotNetCore.Shared\YNDotNetCore.Shared.csproj", "{C87F51B4-4A08-4988-9EF0-B6B8A3EDC459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.Shared", "YNDotNetCore.Shared\YNDotNetCore.Shared.csproj", "{C87F51B4-4A08-4988-9EF0-B6B8A3EDC459}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.RestApiWithNLayer", "YNDotNetCore.RestApiWithNLayer\YNDotNetCore.RestApiWithNLayer.csproj", "{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YNDotNetCore.ConsoleAppHttpClient", "YNDotNetCore.ConsoleAppHttpClient\YNDotNetCore.ConsoleAppHttpClient.csproj", "{126597BB-328E-4F81-8931-7F0DD85068D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{C87F51B4-4A08-4988-9EF0-B6B8A3EDC459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C87F51B4-4A08-4988-9EF0-B6B8A3EDC459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C87F51B4-4A08-4988-9EF0-B6B8A3EDC459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{126597BB-328E-4F81-8931-7F0DD85068D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{126597BB-328E-4F81-8931-7F0DD85068D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{126597BB-328E-4F81-8931-7F0DD85068D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{126597BB-328E-4F81-8931-7F0DD85068D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

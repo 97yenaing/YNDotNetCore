@@ -120,8 +120,7 @@ namespace YNDotNetCore.RestApi.Controllers
             }
             string query = @"DELETE FROM [dbo].[tbl_blog]
             WHERE BlogId = @BlogId";
-            using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, new BlogModel { BlogId = id });
+            int result = _dapperService.Execute(query, new BlogModel { BlogId = id });
 
             string message = result > 0 ? "Delete  Successful." : "Delete Failed";
             return Ok(message);

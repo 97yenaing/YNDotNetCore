@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using YNDotNetCore.RestApi.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using YNDotNetCore.Shared;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace YNDotNetCore.RestApi.Controllers
 {
@@ -16,76 +16,29 @@ namespace YNDotNetCore.RestApi.Controllers
         [HttpGet]
         public IActionResult GetBlogs()
         {
-            string query = "select * from tbl_blog";
-           /* SqlConnection connection = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
-            Console.WriteLine("Connection Open");
-
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            sqlDataAdapter.Fill(dt);
-
-            connection.Close();*/
-            /* List<BlogModel> list = new List<BlogModel>();
-             foreach (DataRow dr in dt.Rows)
-             {   BlogModel blog = new BlogModel();
-                 blog.BlogId =Convert.ToInt32(dr["BlogID"]);
-                 blog.BlogAuthor = Convert.ToString(dr["BlogAuthor"]);
-                 blog.BlogTitle = Convert.ToString(dr["BlogTitle"]);
-                 blog.BlogContent = Convert.ToString(dr["BlogContent"]);
-                 list.Add(blog);
-             }*/
-            /*List<BlogModel> list = dt.AsEnumerable().Select(dr => new BlogModel
-            {
-                BlogId = Convert.ToInt32(dr["BlogID"]),
-                BlogAuthor = Convert.ToString(dr["BlogAuthor"]),
-                BlogTitle = Convert.ToString(dr["BlogTitle"]),
-                BlogContent = Convert.ToString(dr["BlogContent"]),
-            }).ToList();*/
-            var list=_adoDotNetService.Query<BlogModel>(query);
+           string query = "select * from tbl_blog";
+           var list = _adoDotNetService.Query<BlogModel>(query);
             return Ok(list);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetBlog(int id)
         {
+           /* AdoDotNetParameter[] parameters= new AdoDotNetParameter[1];
+            parameters[0]=new AdoDotNetParameter("@BlogId", id); without param in AdoDotNetservice calss */
             string query = "select * from tbl_blog where BlogId=@BlogId ";
-            SqlConnection connection = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
-            Console.WriteLine("Connection Open");
-
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogId", id);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            sqlDataAdapter.Fill(dt);
-
-            connection.Close();
-            if (dt.Rows.Count == 0)
+            var item = _adoDotNetService.QueryFirstOrDefault<BlogModel>(query, new AdoDotNetParameter("@BlogId", id));
+            if (item is null)
             {
                 return NotFound("No data found.");
             }
-            DataRow dr = dt.Rows[0];
-            var item = new BlogModel
-            {
-                BlogId = Convert.ToInt32(dr["BlogID"]),
-                BlogAuthor = Convert.ToString(dr["BlogAuthor"]),
-                BlogTitle = Convert.ToString(dr["BlogTitle"]),
-                BlogContent = Convert.ToString(dr["BlogContent"]),
-            };
             return Ok(item);
         }
 
         [HttpPost]
         public IActionResult CreateBlog(BlogModel blog)
         {
-            SqlConnection connection = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
+            
             string query = @"INSERT INTO [dbo].[tbl_blog]
            ([BlogTitle]
            ,[BlogAuthor]
@@ -94,14 +47,9 @@ namespace YNDotNetCore.RestApi.Controllers
            (@BlogTitle
            ,@BlogAuthor
            ,@BlogContent)";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
-            cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
-            cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
-            int result = cmd.ExecuteNonQuery();
-
-            connection.Close();
+            int result = _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogTitle", blog.BlogTitle),
+                new AdoDotNetParameter("@BlogAuthor", blog.BlogAuthor),
+                new AdoDotNetParameter("@BlogContent", blog.BlogContent));
             string message = result > 0 ? "saving Successful." : "Saving Failed";
             return Ok(message);
         }

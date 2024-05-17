@@ -161,23 +161,25 @@ namespace YNDotNetCore.RestApi.Controllers
             {
                 return NotFound("No data found.");
             }
+            string title = string.Empty;
+            string author = string.Empty;
+            string content = string.Empty;
             string conditions = string.Empty;
-            string target = string.Empty;
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
                 conditions += "[BlogTitle] = @BlogTitle, ";
-                target = "title";
+                title = "title";
 
             }
             if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
                 conditions += "[BlogAuthor] =@BlogAuthor, ";
-                target = "author";
+                author = "author";
             }
             if (!string.IsNullOrEmpty(blog.BlogContent))
             {
                 conditions += "[BlogContent] = @BlogContent, ";
-                target = "content";
+                content = "content";
             }
             if (conditions.Length == 0)
             {
@@ -191,21 +193,17 @@ namespace YNDotNetCore.RestApi.Controllers
 
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
-            if (target=="title")
+            if (title=="title")
             {
                 cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
             }
-            else if (target == "author")
+             if (author == "author")
             {
                 cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
             }
-            else
-            {
+            if(content == "content") { 
                 cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
             }
-           
-
-           
             
             int result = cmd.ExecuteNonQuery();
             connection.Close();
