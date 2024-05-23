@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.Shared", "YNDo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.RestApiWithNLayer", "YNDotNetCore.RestApiWithNLayer\YNDotNetCore.RestApiWithNLayer.csproj", "{E30B13E0-FFEA-4FD1-955D-3C0D555160EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YNDotNetCore.ConsoleAppHttpClient", "YNDotNetCore.ConsoleAppHttpClient\YNDotNetCore.ConsoleAppHttpClient.csproj", "{126597BB-328E-4F81-8931-7F0DD85068D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.ConsoleAppHttpClient", "YNDotNetCore.ConsoleAppHttpClient\YNDotNetCore.ConsoleAppHttpClient.csproj", "{126597BB-328E-4F81-8931-7F0DD85068D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YNDotNetCore.ConsoleAppHttpClientExample", "YNDotNetCore.ConsoleAppHttpClientExample\YNDotNetCore.ConsoleAppHttpClientExample.csproj", "{2DAFF976-182B-4F95-BD49-6397D6DF7DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YNDotNetCoreConsoleAppRestClientExample", "YNDotNetCoreConsoleAppRestClientExample\YNDotNetCoreConsoleAppRestClientExample.csproj", "{AA6E0FEC-A5A2-49DF-80DC-669001073AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{126597BB-328E-4F81-8931-7F0DD85068D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{126597BB-328E-4F81-8931-7F0DD85068D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{126597BB-328E-4F81-8931-7F0DD85068D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DAFF976-182B-4F95-BD49-6397D6DF7DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAFF976-182B-4F95-BD49-6397D6DF7DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAFF976-182B-4F95-BD49-6397D6DF7DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAFF976-182B-4F95-BD49-6397D6DF7DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6E0FEC-A5A2-49DF-80DC-669001073AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6E0FEC-A5A2-49DF-80DC-669001073AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6E0FEC-A5A2-49DF-80DC-669001073AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6E0FEC-A5A2-49DF-80DC-669001073AB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
